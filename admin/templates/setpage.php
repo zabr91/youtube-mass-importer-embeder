@@ -10,11 +10,11 @@
 		</form>
 	<hr />
     <h3>Таблица поиска видео</h3>
-	<!-- <a href="?page=<?= $_GET['page'] ?>&action=create"  class="button button-primary">Создать новую стоимость</a>	-->
+	 <a href="?page=<?= $_GET['page'] ?>&action=create"  class="button button-primary">Создать новую задачу</a>
 	
 	<?php
-	/*echo '<form action="" method="POST">';
+	echo '<form action="" method="POST">';
 	if($GLOBALS['Example_List_Table']) $GLOBALS['Example_List_Table']->display();
-	echo '</form>';*/
+	echo '</form>';
 	?>
 </div>

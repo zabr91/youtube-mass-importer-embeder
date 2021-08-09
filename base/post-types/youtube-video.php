@@ -3,7 +3,7 @@ add_action( 'init', 'register_product_youtube_video_post_type' );
 
 function register_product_youtube_video_post_type()
 {
-	register_post_type( 'products', [
+	register_post_type( 'youtube_video', [
 		'label'  => null,
 		'labels' => [
 			'name'               => 'Видео', // основное название для типа записи
@@ -36,7 +36,7 @@ function register_product_youtube_video_post_type()
 		//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
 		'hierarchical'        => false,
 		//'supports'            => [ 'title', 'editor',  ], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
-		'supports'            => [ 'title', 'editor', 'thumbnail'  ], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+		'supports'            => [ 'title', 'editor', 'thumbnail','custom-fields',  ], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
 		'taxonomies'          => [],
 		'has_archive'         => true,//false
 		'rewrite'             => true,

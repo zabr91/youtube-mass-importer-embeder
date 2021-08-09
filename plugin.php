@@ -26,6 +26,19 @@ define( 'YMIE_TEXT_DOMAIN',  'youtube-mass-importer-embeder'  );
 
 require_once('update-config.php');
 
+require_once(YMIE_PLUGIN_DIR. 'base/models/youtube.php');
+
+require_once(YMIE_PLUGIN_DIR. '/inc/activation.php');
+
+require_once(YMIE_PLUGIN_DIR. 'base/models/post-inner.php');
+require_once(YMIE_PLUGIN_DIR. 'base/models/BaseCustomData.php');
+
 require_once(YMIE_PLUGIN_DIR.'base/post-types/youtube-video.php');
 
 require_once(YMIE_PLUGIN_DIR.'admin/controllers/Settings.php');
+
+require_once(YMIE_PLUGIN_DIR. 'base/models/cron.php');
+
+
+
+

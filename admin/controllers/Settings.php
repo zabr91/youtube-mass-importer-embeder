@@ -4,9 +4,8 @@ class Settings
 	
 	function __construct()
 	{
-	//	$this->delete();
-
-	//	$this->save();		
+		$this->delete();
+		$this->save();		
 
 		// WP 5.4.2. Cохранение опции экрана per_page. Нужно вызывать до события 'admin_menu'
 		add_filter( 'set_screen_option_'.'lisense_table_per_page', function( $status, $option, $value ){
@@ -36,28 +35,28 @@ class Settings
 
 	function page_load(){
 	
-	/*	require_once TCW_PLUGIN_DIR . 'backend/controllers/TablePrice.php';	
-		$GLOBALS['Example_List_Table'] = new TablePrice();*/
+		require_once YMIE_PLUGIN_DIR . 'admin/controllers/TableTasks.php';	
+		$GLOBALS['Example_List_Table'] = new TableTasks();
 
 		}
 
 
 	function wiev() {
-	/*	if(isset($_GET['action']))
+		if(isset($_GET['action']))
 		{
 			if($_GET['action'] == 'edit')
 			{
-				$price = new BaseCustomData('tc_price');
-			    $values = $price->get_by(['id' => $_GET['id']]);
-				require_once TCW_PLUGIN_DIR . 'backend/templates/_form_price.php';
+				$tasks = new BaseCustomData('ymie_items');
+			    $values = $tasks->get_by(['id' => $_GET['id']]);
+				require_once YMIE_PLUGIN_DIR . 'admin/templates/_form_task.php';
 			}
-			elseif ($_GET['action'] == 'create') {
-				require_once TCW_PLUGIN_DIR . 'backend/templates/_form_price.php';
+			if ($_GET['action'] == 'create') {
+				require_once YMIE_PLUGIN_DIR . 'admin/templates/_form_task.php';
 			}		
 	   } 
-	   else {*/
+	   else {
 			require_once YMIE_PLUGIN_DIR . 'admin/templates/setpage.php'; 		
-		//}
+		}
 	}	
 
 	public function addControls(){
@@ -119,6 +118,39 @@ class Settings
 
 		return $options;
 	}
+
+	private function save(){
+		
+		if($_POST){
+
+		 $price = new BaseCustomData('ymie_items');
+
+		 $id = intval($_POST['id']);
+		 unset($_POST['id']);
+		 unset($_POST['submit']);
+		 
+
+		 if($id) {
+			 $price->update($_POST, ['id' => $id]);
+		 }
+		 else{
+			 $price->insert($_POST);
+		 }
+
+	 }
+ }
+
+ private function delete()
+ {
+	 if(isset($_GET['action'])) {
+	 if($_GET['action'] == 'deleteprice')
+	 {
+		 $price = new BaseCustomData('ymie_items');
+		
+		 $price->delete(['id' => intval($_GET['id']) ]);
+
+	 }}
+ }
 }
 
 $settings = new Settings();
